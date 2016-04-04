@@ -109,16 +109,16 @@ func create(hydro string) Rule {
 			for rn := 0; rn < len(cell); rn++ {
 				pt := Pattern{cell[ln], cell[c], cell[rn]}
 				var prob Probability
-				fmt.Printf("[%s][%s][%s] -> ", cell[ln], cell[c], cell[rn])
+				fmt.Printf("[ %s ][ %s ][ %s ] -> ", cell[ln], cell[c], cell[rn])
 				if cell[c] == "#" {
 					prob = Probability{"_": 0.0, "*": 0.0, "|": 0.0, "?": 1.0}
-					fmt.Printf("{_:0.0, *:0.0, |:0.0, ?:1.0}\n")
+					fmt.Printf("{ _ : 0.0, * : 0.0, | : 0.0, ? : 1.0 }\n")
 				} else if len(cell[c]) == 1 {
 					prob = Probability{"_": 0.25, "*": 0.25, "|": 0.25, "?": 0.25}
-					fmt.Printf("{_:0.25, *:0.25, |:0.25, ?:0.25}\n")
+					fmt.Printf("{ _ : 0.25, * : 0.25, | : 0.25, ? : 0.25 }\n")
 				} else {
 					prob = Probability{"_" + cell[c][1:]: 0.25, "*" + cell[c][1:]: 0.25, "|" + cell[c][1:]: 0.25, "?" + cell[c][1:]: 0.25}
-					fmt.Printf("{_%s:0.25, *%s:0.25, |%s:0.25, ?%s:0.25}\n", cell[c][1:], cell[c][1:], cell[c][1:], cell[c][1:])
+					fmt.Printf("{ _%s : 0.25, *%s : 0.25, |%s : 0.25, ?%s : 0.25 }\n", cell[c][1:], cell[c][1:], cell[c][1:], cell[c][1:])
 				}
 				rule[pt] = prob
 				// count++
